@@ -20,6 +20,7 @@ public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Long Id;
 	
 	@Column(name = "conta")
