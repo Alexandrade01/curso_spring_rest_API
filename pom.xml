@@ -12,6 +12,7 @@
 	<groupId>curso.api.rest</groupId>
 	<artifactId>cursospringrestAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>cursospringrestAPI</name>
 	<description>Curso API Rest Spring Boot</description>
 	<url />
@@ -28,7 +29,7 @@
 		<url />
 	</scm>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>23</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
