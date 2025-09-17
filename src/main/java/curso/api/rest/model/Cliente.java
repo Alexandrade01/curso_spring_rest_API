@@ -2,15 +2,23 @@ package curso.api.rest.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
+@JsonPropertyOrder({"id","conta","dataNascimento","login","senha","telefones"})
 public class Cliente implements Serializable {
 
 	/**
@@ -20,7 +28,6 @@ public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
 	private Long Id;
 	
 	@Column(name = "conta")
@@ -35,6 +42,17 @@ public class Cliente implements Serializable {
 	
 	@Column(name = "senha")
 	private String senha;
+	
+	@OneToMany(mappedBy = "cliente", orphanRemoval = true,cascade = CascadeType.ALL)
+	private List<Telefone> telefones = new ArrayList<>();
+
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}
 
 	public Long getId() {
 		return Id;

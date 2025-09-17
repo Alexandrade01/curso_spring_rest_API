@@ -12,17 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-//@SpringBootApplication
-//@EntityScan(basePackages = {"curso.api.rest.model"})
-
-//public class CursospringrestApiApplication {
-//
-//	public static void main(String[] args) {
-//
-//		SpringApplication.run(CursospringrestApiApplication.class, args);
-//	}
-//
-//}
 
 //@ComponentScan(basePackages = {"curso.*"})
 //@EnableJpaRepositories(basePackages = {"curso.api.rest.repository"})
