@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta=charset="ISO-8859-1">
+	<title></title>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.js"
+		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<script>
+		$(document).ready(
+			function () {
+				
+				$.ajax({url :  "http://localhost:8080/cursospringrestAPI/cliente/",
+						method:"GET"
+					}).then(function (data, status, info){
+							
+						} );
+			}
+		)
+	</script>
+	
+
+	<h1>Olá, Mundo!</h1>
+	<p>Este é um conteúdo simples em HTML para testes.</p>
+
+	
+</body>
+
+</html>

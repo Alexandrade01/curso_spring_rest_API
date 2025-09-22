@@ -1,15 +1,12 @@
 package curso.api.rest.controller;
 
-import java.awt.PageAttributes.MediaType;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import curso.api.rest.CursospringrestApiApplication;
 import curso.api.rest.model.Cliente;
 import curso.api.rest.model.Telefone;
 import curso.api.rest.repository.ClienteRepository;
 
+//@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "wwww.jdevtreinamentos.com.br") --> apenas o host jdevtreinamentos teria acesso ao controller
 @RestController /* Arquitetura REST */
 @RequestMapping(value = "/cliente")
 public class IndexController {
@@ -92,31 +92,6 @@ public class IndexController {
 		return new ResponseEntity<Cliente>(clienteSalvo, HttpStatus.CREATED);
 
 	}
-
-//	@SuppressWarnings({ "unchecked", "rawtypes" })
-//	@PutMapping(value = "/id/{id}", produces = "application/json")
-//	public ResponseEntity<Cliente> atualizaClientebyId(@PathVariable Long id, @RequestBody Cliente cliente) {
-//
-//		Optional<Cliente> clientesPorId = clienteRepository.findById(id);
-//
-//		if (clientesPorId.isPresent()) {
-//
-//			clientesPorId.get().setConta(cliente.getConta());
-//			clientesPorId.get().setDataNascimento(cliente.getDataNascimento());
-//			clientesPorId.get().setLogin(cliente.getLogin());
-//			clientesPorId.get().setSenha(cliente.getSenha());
-//
-//			Cliente clienteSalvo = clienteRepository.save(clientesPorId.get());
-//
-//			return new ResponseEntity<Cliente>(clienteSalvo, HttpStatus.CREATED);
-//
-//		}
-//
-//		else {
-//			return new ResponseEntity("não encontrado", HttpStatus.NO_CONTENT);
-//		}
-//
-//	}
 
 	@DeleteMapping(value = "/{id}", produces = "application/json")
 	public ResponseEntity<Object> deletarClienteById(@PathVariable Long id) {
