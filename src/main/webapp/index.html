@@ -18,6 +18,7 @@
 				$.ajax({url :  "http://localhost:8080/cursospringrestAPI/cliente/",
 						method:"GET"
 					}).then(function (data, status, info){
+							alert(data[1].id + "-" + data[1].conta);
 							
 						} );
 			}
