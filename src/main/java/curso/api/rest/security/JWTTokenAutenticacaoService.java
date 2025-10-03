@@ -1,5 +1,6 @@
 package curso.api.rest.security;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 import javax.crypto.SecretKey;
@@ -51,7 +52,7 @@ public class JWTTokenAutenticacaoService {
 	}
 
 	/* Gera Token de autenticação e adiciona ao cabeçalho e à resposta HTTP */
-	public void addAuthorization(HttpServletResponse response, String username) throws Exception {
+	public void addAuthentication(HttpServletResponse response, String username) throws IOException {
 
 		String jwt = Jwts.builder().subject(username) // API nova 0.12.x
 				.issuedAt(new Date()).expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
@@ -97,7 +98,7 @@ public class JWTTokenAutenticacaoService {
 
 			String user = claims.getSubject(); // substitui getBody() /*joao silva*/
 
-			if (user == null || user.isBlank()) {
+			if (user != null) {
 				Cliente cliente = ApplicationContextLoad.getApplicationContext() // Applicationcontext são todos os
 																					// services , controles etc
 																					// carregados em memoria na
