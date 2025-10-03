@@ -1,5 +1,7 @@
 package curso.api.rest.security;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +17,12 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import curso.api.rest.service.ImplementacaoUserDetailsService;
+import jakarta.servlet.Filter;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Configuration
 @EnableWebSecurity
-public class WebConfigSecurity {
+public class WebConfigSecurity implements SecurityFilterChain  {
 
 	@Autowired
 	private ImplementacaoUserDetailsService implementacaoUserDetailsService;
@@ -61,5 +65,17 @@ public class WebConfigSecurity {
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Override
+	public boolean matches(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Filter> getFilters() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
